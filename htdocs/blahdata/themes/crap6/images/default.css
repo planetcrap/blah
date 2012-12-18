@@ -1,0 +1,90 @@
+P, BODY, TD, LI, INPUT, TEXTAREA, SELECT { font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 13px; }
+
+A { text-decoration: none; color: #224488; font-weight: bold; }
+A:Hover { text-decoration: underline; }
+
+/* admin links */
+A.admin { color: #776622; }
+
+TD.comment A { text-decoration: underline; color: #0000AA; font-weight: normal; }
+
+P.error { color: #880000; }
+
+.quote { padding-left: 20px; color: #666666 }
+.signature {
+	color: #666666;
+	background-color: #E0E0E0;
+	padding: 5px;
+	font-size: 11px;
+}
+.signature A {
+	color: #666666;
+}
+
+TD.comment-info { font-size: 11px; }
+TD.comment-info A { text-decoration: none; font-weight: normal; color: #000000; }
+
+TABLE.block {
+	border: 1px solid #000000;
+	margin-bottom: 8px;
+	width: 650px;
+}
+
+TD.block {
+	background-color: #EEEEEE;
+	border-bottom: 1px solid #888888;
+	border-right: 1px solid #888888;
+	border-left: 1px solid #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+	padding: 8px		
+}
+
+TD.blocktitle {
+	color: #CCCCCC;
+	font-weight: bold;
+	font-size: 10px;
+	text-align: center;
+	background-color: #444444;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #666666;
+	border-right: 1px solid #222222;
+	padding-bottom: 1px;
+}
+
+TD.copyright {
+	background-color: #444444;
+	color: #BBBBBB;
+	font-size: 11px;
+	text-align: center;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-left: 1px solid #777777;
+	border-top: 1px solid #777777;
+	padding: 2px		
+}
+TD.copyright A {
+	color: #BBBBBB;
+	font-weight: normal;
+}
+
+/* profile stuff */
+TD.profiletitle {
+	color: #777777;
+	text-align: right;
+	width: 120px;
+}
+TD.profiledata {
+	padding-left: 20px;
+}
+
+.textad A { font-weight: normal; color: #008800; text-decoration: underline }
+
+
+/* textads.biz stuff */
+TD.textads-headline { font-size: 11px; font-weight: bold; text-align: center }
+TD.textads-text { font-size: 11px; text-align: center }
+TD.textads-link { font-size: 11px; font-weight: bold; text-align: center }
+
+/* marketbanker stuff */
+.adHeadline { font-size: 13px; }
+.adText { font-size: 11px; font-weight: normal; }

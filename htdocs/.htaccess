@@ -1,0 +1,36 @@
+
+### REFSPAM FUCKER 3000 ### START
+SetEnvIfNoCase Referer ".*(intralinx).*" BadReferrer
+SetEnvIfNoCase Referer ".*(health-shop).*" BadReferrer
+SetEnvIfNoCase Referer ".*(moneyblaster).*" BadReferrer
+SetEnvIfNoCase Referer ".*(bartertraffic).*" BadReferrer
+SetEnvIfNoCase Referer ".*(insurance).*" BadReferrer
+SetEnvIfNoCase Referer ".*(casino).*" BadReferrer
+SetEnvIfNoCase Referer ".*(kasino).*" BadReferrer
+SetEnvIfNoCase Referer ".*(poker).*" BadReferrer
+SetEnvIfNoCase Referer ".*(xxx).*" BadReferrer
+SetEnvIfNoCase Referer ".*(roulette).*" BadReferrer
+# NOBLOCK google
+# NOBLOCK vivisimo
+# NOBLOCK feedster
+order deny,allow
+deny from env=BadReferrer
+### REFSPAM FUCKER 3000 ### END
+
+RewriteEngine on
+
+RewriteRule ^$ /blah.php [QSA]
+
+RewriteRule ^topics/([0-9]+)/?$ /blah.php?action=viewtopic&topic_id=$1 [QSA]
+RewriteRule ^topics/([0-9]+)/([0-9]+)/?$ /blah.php?action=viewtopic&topic_id=$1&offset=$2 [QSA]
+RewriteRule ^topics/([0-9]+)/([0-9]+)-([0-9]+)/?$ /blah.php?action=viewtopic&topic_id=$1&offset=$2&limit=$3 [QSA]
+
+RewriteRule ^users/?$ /blah.php?action=listusers [QSA]
+RewriteRule ^users/([0-9]+)/?$ /blah.php?action=profile&user_id=$1 [QSA]
+
+RewriteRule ^pipeline/?$ /blah.php?location=pipeline [QSA]
+RewriteRule ^submissions/?$ /blah.php?location=submission [QSA]
+
+RewriteRule ^archives/?$ /blah.php?action=archive [QSA]
+
+RewriteRule ^atom.xml$ /blah.php?action=atom [QSA]

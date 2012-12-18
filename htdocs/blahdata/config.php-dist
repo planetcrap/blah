@@ -1,0 +1,184 @@
+<?php
+
+// MANDATORY CONFIGURATION SETTINGS
+
+// database configuration
+define(MYSQL_HOST,     "...");
+define(MYSQL_USERNAME, "...");
+define(MYSQL_PASSWORD, "...");
+define(MYSQL_DATABASE, "...");
+
+
+
+
+
+// OPTIONAL SETTINGS
+
+// blah site information
+define(SITE_TITLE,           "PlanetCrap 6.0");
+define(SITE_OWNER_NAME,      "Hendrik Mans");
+define(SITE_OWNER_EMAIL,     "hendrik@mans.de");
+
+// choose a theme
+define(THEME, "crap6");
+
+// gzip-compress all output if browser supports it?
+define(USE_GZIP, 1);
+
+// allow comment titles?
+define(ALLOW_COMMENT_TITLES, 0);
+
+
+// how many topics should be displayed on the front page?
+define(TOPICS_ON_FRONTPAGE, 10);
+
+// allow duplicate user names (users with unique_name = 'Y' are not affected)
+define(ALLOW_DUPLICATE_USER_NAMES, 1);
+
+// sort thread lists by which field? ("when_opened", "when_last_comment")
+// used in SQL query, so you can add "desc" or "asc".
+define(SORT_THREADLIST_BY, "when_last_comment desc");
+
+// allow guest comments?
+// note: each individual topic can be configured to allow guest comments
+// or not. however, this setting here is the "master toggle"; if it is set
+// to 0, even topics which would normally allow guest comments won't.
+define(ALLOW_GUEST_COMMENTS, 1);
+
+// vote threshold
+// how many votes should be collecter for each topic before blah decides
+// whether or not to publish/reject it?
+define(PUBLISHVOTES_THRESHOLD, 50);
+
+// page length
+// how many comments should be displayed at once? (this is a default
+// value that can be overriden by each user in his user settings.)
+define(PAGE_LENGTH, 50);
+
+
+// User Signup Options
+
+// minimum password length
+define(MINIMUM_PASSWORD_LENGTH, 5);
+
+// mark all threads as read for new members?
+// on sites with a high number of users/signups and threads, this can
+// highly increase disk space usage.
+define(MARK_ALL_READ_ON_SIGNUP, 1);
+
+// extra data fields you've added to the users table
+$CONFIG["user_extra_fields"] = array("extra_realname", "extra_company", "extra_company_url", "extra_pagewidth");
+
+// how many minutes should an online entry "live"?
+$CONFIG["expire_online"] = 5;
+
+// points a user is awarded for posting a comment
+$CONFIG["comment_points"] = 1;
+
+// points a user is awarded when his topic gets published
+$CONFIG["publish_points"] = 50;
+
+// points a user is "awarded" when his topic gets rejected
+$CONFIG["reject_points"] = -10;
+
+// an array of email domains that are blocked by the signup
+// code. these are checked for at the end of the email string.
+$CONFIG["blocked_email_domains"] = array("@hotmail.com", "@msn.com", "@web.de", "@freemail.de");
+
+// dimensions of custom user avatars
+$CONFIG["custom_avatar_width"] = 42;
+$CONFIG["custom_avatar_height"] = 42;
+$CONFIG["small_custom_avatar_width"] = 20;
+$CONFIG["small_custom_avatar_height"] = 20;
+$CONFIG["large_custom_avatar_width"] = 100;
+$CONFIG["large_custom_avatar_height"] = 100;
+
+// required for resizing image
+$CONFIG["convert_cmd"] = "/usr/bin/convert";
+
+// TWEAKING
+
+// some additional directories
+define(THEME_DIR, DATA_DIR."themes/".THEME."/");
+define(IMAGE_DIR, THEME_DIR."images/");
+
+// and some useful URLs
+define(THEME_URL,            DATA_URL."themes/".THEME."/");
+define(IMAGE_URL,            THEME_URL."images/");
+
+// directory and url for default avatars
+$CONFIG["default_avatars_dir"] = IMAGE_DIR."avatars/default/";
+$CONFIG["default_avatars_url"] = IMAGE_URL."avatars/default/";
+
+// directory and url for user avatars
+$CONFIG["custom_avatars_dir"] = IMAGE_DIR."avatars/custom/";
+$CONFIG["custom_avatars_url"] = IMAGE_URL."avatars/custom/";
+
+// table names
+define(TABLE_PREFIX,         "blah_");
+define(TOPICS_TABLE,         TABLE_PREFIX."topics");
+define(THREADS_TABLE,        TABLE_PREFIX."threads");
+define(COMMENTS_TABLE,       TABLE_PREFIX."comments");
+define(USERS_TABLE,          TABLE_PREFIX."users");
+define(VOTES_TABLE,          TABLE_PREFIX."publishvotes");
+define(LASTREAD_TABLE,       TABLE_PREFIX."lastread");
+define(ONLINE_TABLE,         TABLE_PREFIX."online");
+
+// templates
+define(HEADER_TEMPLATE,      "header.php");
+define(FOOTER_TEMPLATE,      "footer.php");
+define(FRONTPAGE_TEMPLATE,   "frontpage.php");
+define(SUBMISSIONBIN_TEMPLATE, "submissionbin.php");
+define(PIPELINE_TEMPLATE,    "pipeline.php");
+define(ARCHIVE_TEMPLATE,     "archive.php");
+define(PREVIEW_TEMPLATE,     "preview.php");
+define(SIMPLEPAGE_TEMPLATE,  "simplepage.php");
+define(TOPIC_TEMPLATE,       "topic.php");
+define(THREAD_TEMPLATE,      "thread.php");
+define(COMMENT_TEMPLATE,     "comment.php");
+define(COMMENTS_TEMPLATE,    "comments.php");
+define(COMMENTFORM_TEMPLATE, "commentform.php");
+define(TOPICFORM_TEMPLATE,   "topicform.php");
+define(LOGINFORM_TEMPLATE,   "loginform.php");
+define(FIRSTLOGIN_TEMPLATE,  "firstlogin.php");
+define(SIGNUPFORM_TEMPLATE,  "signupform.php");
+define(SIGNUPSUCCESS_TEMPLATE, "signupsuccess.php");
+define(THREADLIST_TEMPLATE,  "threadlist.php");
+define(USERLIST_TEMPLATE,    "userlist.php");
+define(PROFILE_TEMPLATE,     "profile.php");
+define(PROFILEFORM_TEMPLATE, "profileform.php");
+define(ONLINERS_TEMPLATE,    "onliners.php");
+define(SEARCHFORM_TEMPLATE,  "searchform.php");
+define(SEARCHRESULTS_TEMPLATE, "searchresults.php");
+
+// cookie names
+define(COOKIE_LIFE,          90 * 24 * 60 * 60);
+define(COOKIE_URL,           "/");
+define(COOKIE_PREFIX,        "blah_");
+define(AUTHOR_NAME_COOKIE,   COOKIE_PREFIX."author_name");
+define(AUTHOR_EMAIL_COOKIE,  COOKIE_PREFIX."author_email");
+define(AUTHOR_URL_COOKIE,    COOKIE_PREFIX."author_url");
+define(LOGIN_EMAIL_COOKIE,   COOKIE_PREFIX."login_email");
+define(LOGIN_PASSWORD_COOKIE, COOKIE_PREFIX."login_password");
+
+// this is the global var used for blah's caching and debug logging.
+// you can change it if it conflicts with one of your own globals.
+define(BLAH_GLOBALVAR,       "BLAHDATA");
+
+// session stuff
+define(USER_SESSIONVAR,      "blah_user");
+
+// form defaults
+define(FORM_INPUT_DEFAULT_SIZE, 50);
+define(FORM_INPUT_DEFAULT_WIDTH, "100%");
+define(FORM_BUTTON_DEFAULT_WIDTH, "150");
+define(FORM_TEXTAREA_DEFAULT_COLS, 50);
+define(FORM_TEXTAREA_DEFAULT_ROWS, 15);
+define(FORM_TEXTAREA_DEFAULT_WIDTH, "100%");
+
+// debug stuff
+define(DEBUG, 0);
+
+//
+// END OF CONFIGURATION
+?>

@@ -1,0 +1,52 @@
+My bible.
+
+
+Fixes:
+
+- check type of uploaded avatar image
+- check size of uploaded avatar image (set max_size in form!)
+- allow uploading of GIFs
+
+Other stuff:
+
+- "bookmark" comments <http://www.planetcrap.com/blah.php?action=viewthread&thread_id=382&offset=0&limit=50#3>
+- vote only when viewing full topic
+- large avatars
+- rewrite onProfileStore so it first creates a big "master" BMP
+- lastread tracking for guests
+- when starting to read a thread, put $offset and $limit into the URL right away (and pass it along, too!)
+- "read more" link in topic.php light mode
+- number in brackets after "submission bin" should display the number of un-voted for topics
+- "please email me my login data"  (by entering email address)
+- improve menu?
+- make "new" icons for threads clickable, too
+- change "new" comment links so they jump to a "page" with the first new comment "anchored", not just offset to first new comment.
+- start/end of discussion links (page jumps)
+- icons next to comments (indicating new vs. old)
+- move quote strings into config define
+- add default values for all or most defines
+- avatar images (configurable)
+- user option: show/hide avatar images
+- onSignup(): check email for format and "evil" free email providers
+- move activation key email body into some kind of template
+- onUpdate: reads version table, updates tables accordingly
+- move all strings out into language file
+- comment attachments/images
+- expire unverified accounts after 24 hours
+- onStoreProfile(): arrayForceKeys on $extra (with user-definable key array)
+- setting everything read on signup: this needs to be done differently, for example through a "global" lastread datetime stored with the user data. then my functions just need to check if the last comment datetime is higher than the global lastread; if yes, it THEN checks if a "local" lastread exists.
+- config option of comment body & signature should be pre-rendered (more disk space usage)
+- only purge stale users and online entries every couple of page loads (random)
+- user setting: always preview
+- user setting: launch links in new window?
+- let old pc5 topics parse HTML
+- option in comment form: include signature? (logged in users only)
+- replace all references to $_SESSION with $this->session
+- cache data in a member var, not a global
+- check if votes are deleted when topic is published
+- only allow uploading of avatars when user has > x points (configurable)
+- avatar images on user online list
+
+ideas:
+- rate published topics (0-10)
+
