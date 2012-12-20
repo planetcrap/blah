@@ -1878,7 +1878,10 @@ class blah {
 			if (!$user["email"]) {
 				$error = "You didn't specify your email address!<br/>";
 			}
-			
+
+			// remove data that don't belong to the database
+			$user = $this->arrayForceKeys($user, array("name", "email" ));
+
 			// TODO: check email for format and "evil" free email providers
 			
 			// check if the two passwords are the same
