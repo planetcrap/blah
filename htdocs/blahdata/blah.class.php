@@ -1852,7 +1852,8 @@ class blah {
 	function onSignup() {
 		if ($_POST["submit"]) {
 			// prepare data
-			$user = $this->arrayTrim($this->arrayStripTags($this->arrayForceKeys($_POST["user"], array("name", "email"))));
+			$user = $this->arrayTrim($this->arrayStripTags($this->arrayForceKeys($_POST["user"], array("name", "surname", "captcha", "email" ))));
+			$error = '';
 
 			// fetch password
 			$password = trim($_POST["password"]);
@@ -1860,42 +1861,52 @@ class blah {
 
 			// user name given?
 			if (!$user["name"]) {
-				$error = "You didn't specify your name!";
+				$error .= "You didn't specify your name!<br/>";
+			}
+
+			// check my fave captcha
+			if ($user["name"] == $user["surname"]) {
+				$error .= "Please fuck off.<br/>";
+			}
+
+			// check my second fave captcha
+			if (strtolower($user["captcha"]) != 'fuck') {
+				$error = "Seriously, please fuck off.<br/>";
 			}
 
 			// email address given?
 			if (!$user["email"]) {
-				$error = "You didn't specify your email address!";
+				$error = "You didn't specify your email address!<br/>";
 			}
 			
 			// TODO: check email for format and "evil" free email providers
 			
 			// check if the two passwords are the same
 			if ($password != $confirmpassword) {
-				$error = "Passwords don't match!";
+				$error = "Passwords don't match!<br/>";
 			}
 			
 			// password too short?
 			if (strlen($password) < MINIMUM_PASSWORD_LENGTH) {
-				$error = "Password must be at least ".MINIMUM_PASSWORD_LENGTH." characters long!";
+				$error .= "Password must be at least ".MINIMUM_PASSWORD_LENGTH." characters long!<br/>";
 			}
 			
 			// check if there already is a user with the same email address
 			if ($this->loadUserByEmail($user["email"])) {
-				$error = "Another account is already registered for that email address.";
+				$error .= "Another account is already registered for that email address.<br/>";
 			}
 		
 			// check if the user name is taken
 			if ($someonePotentiallyImportant = $this->loadUserByName($user["name"])) {
 				// check if we're allowing duplicate names *or* if the name is marked as unique
 				if (($someonePotentiallyImportant["unique_name"] == "Y") || (!ALLOW_DUPLICATE_USER_NAMES)) {
-					$error = "You can't use that name! Please pick another.";
+					$error .= "You can't use that name! Please pick another.<br/>";
 				}
 			}
 			
 		
 			// okay... if no error, let's add the account!
-			if (!$error) {
+			if ($error != '') {
 				// make a funky activation key
 				$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  // Lame, I know.
 				$charCount = strlen($chars);

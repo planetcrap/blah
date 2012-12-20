@@ -35,6 +35,8 @@
 
 				$this->formOpen($GLOBALS["PHP_SELF"]."?action=signup", "post");
 				print("Your user name:<br>\n".$this->formRenderInput(array("name" => "user[name]", "value" => $_COOKIE[AUTHOR_NAME_COOKIE], "width" => "250px"))."<br>\n");
+				print("Leave this blank:<br>\n".$this->formRenderInput(array("name" => "user[surname]", "value" => $_COOKIE[AUTHOR_NAME_COOKIE], "width" => "250px"))."<br>\n");
+				print("Everybody can [fill in the blank] off:<br>\n".$this->formRenderInput(array("name" => "user[captcha]", "value" => '', "width" => "250px"))."<br>\n");
 				print("Your email address:<br>\n".$this->formRenderInput(array("name" => "user[email]", "value" => $_COOKIE[AUTHOR_EMAIL_COOKIE], "width" => "250px"))."<br>\n");
 				print("Pick a password:<br>\n".$this->formRenderInput(array("name" => "password", "type" => "password", "width" => "250px"))."<br>\n");
 				print("Confirm password:<br>\n".$this->formRenderInput(array("name" => "confirmpassword", "type" => "password", "width" => "250px"))."<br>\n");
