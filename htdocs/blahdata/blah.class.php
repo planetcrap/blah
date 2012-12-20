@@ -1918,7 +1918,8 @@ class blah {
 				// set date/time of creation
 				$user["when_created"] = $this->unix2datetime();
 
-				// create account
+				// remove data that don't belong to the database and create account
+				$user = $this->arrayForceKeys($user, array("name", "email" ));
 				$user_id = $this->insertUser($user);
 				
 				// set password
