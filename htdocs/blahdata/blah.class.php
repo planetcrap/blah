@@ -1878,7 +1878,10 @@ class blah {
 			if (!$user["email"]) {
 				$error = "You didn't specify your email address!<br/>";
 			}
-			
+
+			// remove data that don't belong to the database
+			$user = $this->arrayForceKeys($user, array("name", "email" ));
+
 			// TODO: check email for format and "evil" free email providers
 			
 			// check if the two passwords are the same
@@ -1918,8 +1921,7 @@ class blah {
 				// set date/time of creation
 				$user["when_created"] = $this->unix2datetime();
 
-				// remove data that don't belong to the database and create account
-				$user = $this->arrayForceKeys($user, array("name", "email" ));
+				// create account
 				$user_id = $this->insertUser($user);
 				
 				// set password
