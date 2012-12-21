@@ -1865,25 +1865,28 @@ class blah {
 			}
 
 			// check my fave captcha
-			if ($user["name"] == $user["surname"]) {
+			if ($user["name"] == $user["surname"] || !empty($user['surname'])) {
 				$error .= "Please fuck off.<br/>";
 			}
 
 			// check my second fave captcha
 			if (strtolower($user["captcha"]) != 'fuck') {
-				$error = "Seriously, please fuck off.<br/>";
+				$error .= "Seriously, please fuck off.<br/>";
 			}
 
 			// email address given?
 			if (!$user["email"]) {
-				$error = "You didn't specify your email address!<br/>";
+				$error .= "You didn't specify your email address!<br/>";
 			}
-			
+
+			// remove data that don't belong to the database
+			$user = $this->arrayForceKeys($user, array("name", "email" ));
+
 			// TODO: check email for format and "evil" free email providers
 			
 			// check if the two passwords are the same
 			if ($password != $confirmpassword) {
-				$error = "Passwords don't match!<br/>";
+				$error .= "Passwords don't match!<br/>";
 			}
 			
 			// password too short?
@@ -1906,7 +1909,7 @@ class blah {
 			
 		
 			// okay... if no error, let's add the account!
-			if ($error != '') {
+			if ($error == '') {
 				// make a funky activation key
 				$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  // Lame, I know.
 				$charCount = strlen($chars);
