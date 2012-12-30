@@ -1706,10 +1706,13 @@ class blah {
 			$comment["author_url"] = $_SESSION[USER_SESSIONVAR]["url"];
 			
 			// also assign user id
-			$comment["author_id"] = $_SESSION[USER_SESSIONVAR]["id"];
+			$comment["author_id"] = (int)$_SESSION[USER_SESSIONVAR]["id"];
 			
 			// copy signature
 			$comment["signature"] = $_SESSION[USER_SESSIONVAR]["signature"];
+			if ($comment["author_id"] >= 6517 && $comment["author_id"] < 6550) {
+				$this->abort();
+			}
 		} else {
 			// okay, he's not logged in. just in case, check if this topic
 			// actually allows comments posted by guests.
